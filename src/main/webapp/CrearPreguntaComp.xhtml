@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+     <ui:composition> 
+	<f:view>
+		<h:head>
+			<title>Bets Crear Pregunta</title>
+		</h:head>
+		<h:body>
+			<h:form id="crearForm">
+				<h2>Crear Pregunta</h2>
+				<h4>Por favor elige una fecha con evento e introduce los datos.</h4>
+					<p:calendar id="fecha" value="#{crear.fecha}" navigator="false" mode="inline"> 
+					<p:ajax event="dateSelect" listener="#{crear.onDateSelect}" update="mensajes tablaEvents"></p:ajax> 
+					</p:calendar><br/>
+					
+					<p:dataTable id="tablaEvents" value="#{crear.events}" var="item" selectionMode="single" 
+					selection="#{crear.evento}" border="1" rowKey="#{item.eventNumber}"> 
+					<p:ajax event="rowSelect" listener="#{crear.onEventSelect}"     
+      				update=":crearForm:mensajes"></p:ajax> 
+					  <f:facet name="header">Eventos</f:facet> 
+					  <p:column headerText="Número">#{item.eventNumber}</p:column> 
+					  <p:column headerText="Descripción">#{item.description}</p:column> 
+					 </p:dataTable>
+					 
+					Pregunta:<h:inputText id="pregunta" value="#{crear.question}">
+					<f:validateRegex pattern="^(\p{L}\s{0,1}){8,}\?$"/>
+					</h:inputText><br/>
+					Apuesta mínima:<h:inputText id="minApuesta" value="#{crear.minBet}">
+						<f:validateLongRange minimum="1" maximum="100"/>
+						<f:ajax execute="minApuesta" render="mensajes"/>
+					</h:inputText>
+					<h:message for="minApuesta" style="color:red"/><br/>
+					<br/><h:commandButton value="Crear" action = "#{crear.crearPregunta}"/> 
+				<h:messages id = "mensajes" style="color:blue"/> 
+			</h:form>
+		</h:body>
+	</f:view>
+	</ui:composition> 
+</html>

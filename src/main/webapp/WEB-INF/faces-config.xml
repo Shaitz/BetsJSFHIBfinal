@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xi="http://www.w3.org/2001/XInclude"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+ <managed-bean>
+  <managed-bean-name>crear</managed-bean-name>
+  <managed-bean-class>modelo.bean.CrearBean</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+  <managed-property>
+   <property-name>fecha</property-name>
+   <property-class>java.util.Date</property-class>
+   <value/>
+  </managed-property>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>ver</managed-bean-name>
+  <managed-bean-class>modelo.bean.VerBean</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ <managed-bean>
+  <managed-bean-name>ini</managed-bean-name>
+  <managed-bean-class>modelo.bean.IniBean</managed-bean-class>
+  <managed-bean-scope>application</managed-bean-scope>
+ </managed-bean>
+ <navigation-rule>
+  <from-view-id>/CrearPregunta.xhtml</from-view-id>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/Menu.xhtml</from-view-id>
+  <navigation-case>
+   <from-outcome>ver</from-outcome>
+   <to-view-id>/VerPreguntas.xhtml</to-view-id>
+  </navigation-case>
+  <navigation-case>
+   <from-outcome>crear</from-outcome>
+   <to-view-id>/CrearPregunta.xhtml</to-view-id>
+  </navigation-case>
+ </navigation-rule>
+ <navigation-rule>
+  <from-view-id>/VerPreguntas.xhtml</from-view-id>
+ </navigation-rule>
+</faces-config>

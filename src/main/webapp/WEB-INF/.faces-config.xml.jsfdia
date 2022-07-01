@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#CrearPregunta.xhtml"
+  PATH="/CrearPregunta.xhtml" SHAPE="336,296,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#CrearPregunta.xhtml:0" NAME="item"
+   PATH="/CrearPregunta.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#Menu.xhtml" PATH="/Menu.xhtml"
+  SHAPE="64,160,50,57" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#Menu.xhtml:0" NAME="item" PATH="/Menu.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="ver::#VerPreguntas.xhtml" NAME="output1"
+    PATH="/VerPreguntas.xhtml" TARGET="rules:#VerPreguntas.xhtml"
+    TITLE="ver" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="crear::#CrearPregunta.xhtml" NAME="output"
+    PATH="/CrearPregunta.xhtml" TARGET="rules:#CrearPregunta.xhtml"
+    TITLE="crear" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#VerPreguntas.xhtml"
+  PATH="/VerPreguntas.xhtml" SHAPE="336,144,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#VerPreguntas.xhtml:0" NAME="item"
+   PATH="/VerPreguntas.xhtml" model-entity="JSFProcessItem"/>
+ </PROCESS-ITEM>
+</PROCESS>

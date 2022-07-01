@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+      <ui:composition> 
+	<f:view>
+		<h:head>
+			<title>Bets</title>
+		</h:head>
+		<h:body>
+			<h:form id="verForm">
+				<h2>Ver Preguntas</h2>
+				<h4>Aquí puedes ver las preguntas de los eventos.</h4>
+					<p:calendar id="fecha" navigator="false" mode="inline"> 
+					<p:ajax event="dateSelect" listener="#{ver.onDateSelect}" update="mensajes tablaEvents"></p:ajax> 
+					</p:calendar>
+					
+					<p:dataTable id="tablaEvents" value="#{ver.events}" var="item" selectionMode="single" 
+					selection="#{ver.evento}" border="1" rowKey="#{item.eventNumber}"> 
+					<p:ajax event="rowSelect" listener="#{ver.onEventSelect}"     
+      				update=":verForm:mensajes :verForm:tablaPreguntas"></p:ajax> 
+					  <f:facet name="header">Eventos</f:facet> 
+					  <p:column headerText="Número">#{item.eventNumber}</p:column> 
+					  <p:column headerText="Descripción">#{item.description}</p:column> 
+					 </p:dataTable>
+					 
+					 <br/>
+					 
+					 <p:dataTable id="tablaPreguntas" value="#{ver.questions}" var="item" selectionMode="single" 
+					 border="1" rowKey="#{item.questionNumber}">  
+					  <f:facet name="header">Preguntas</f:facet> 
+					  <p:column headerText="Número">#{item.questionNumber}</p:column> 
+					  <p:column headerText="Pregunta">#{item.question}</p:column> 
+					  <p:column headerText="Apuesta Mínima">#{item.betMinimum}</p:column> 
+					  <p:column headerText="Resultado">#{item.result}</p:column> 
+					 </p:dataTable>
+					 
+				<h:messages id = "mensajes" style="color:blue"/> 
+			</h:form>
+		</h:body>
+	</f:view>
+	</ui:composition> 
+</html>
